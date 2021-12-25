@@ -26,4 +26,4 @@ client.listentoProcessEvents([
   'uncaughtException'
 ], { ignore: false });
 
-client.login("ODI3NjE0NTgzNzczNDYyNTI4.YGdmJQ.rMdZnSG4_31uHtmMj5H6AbsQGDs")
+client.login(process.env.TOKEN)
