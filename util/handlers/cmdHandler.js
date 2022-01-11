@@ -13,7 +13,7 @@ async function CommandHandler(manager, message){
   
   let data;
 
-  if(message.guild && client.config?.database?.enable){
+  if(message.guild && message.client.config?.database?.enable){
     data = await Schema.findOne({_id: message.guild?.id})
   if(!data){
    let Data = new Schema({_id: message.guild?.id})
