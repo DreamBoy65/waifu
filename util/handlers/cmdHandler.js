@@ -30,8 +30,8 @@ async function CommandHandler(manager, message){
     
   let prefix;
 
-  if (message.content.startsWith(client.user.username)){
-    prefix = client.user.username
+  if (message.content.startsWith(message.client.user.username)){
+    prefix = message.client.user.username
   } else if (message.content.startsWith(message.client.config.prefix)){
     prefix = message.client.config.prefix;
   } else if (serverprefix && message.content.startsWith(serverprefix)){
