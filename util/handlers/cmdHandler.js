@@ -13,7 +13,7 @@ async function CommandHandler(manager, message){
   
   let data;
 
-  if(message.guild){
+  if(message.guild && client.config?.database?.enable){
     data = await Schema.findOne({_id: message.guild?.id})
   if(!data){
    let Data = new Schema({_id: message.guild?.id})
@@ -30,8 +30,8 @@ async function CommandHandler(manager, message){
     
   let prefix;
 
-  if (message.content.startsWith('dream')){
-    prefix = 'dream'
+  if (message.content.startsWith(client.user.username)){
+    prefix = client.user.username
   } else if (message.content.startsWith(message.client.config.prefix)){
     prefix = message.client.config.prefix;
   } else if (serverprefix && message.content.startsWith(serverprefix)){

@@ -21,6 +21,7 @@ module.exports = {
       }
     ],
     antiCrash: true,
+    timezone: "Asia/Calcutta",
     
     channels: {
         debug: "924076193253326869",
