@@ -19,7 +19,9 @@ client.loadEvents({
   dirs: ["client", "guild"]
 });
 
-client.loadSlash();
+if(client.config.slashCommands) {
+  client.loadSlash()
+}
 
 client.database?.init()
 

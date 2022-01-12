@@ -20,6 +20,7 @@ module.exports = {
         CmdDescription: ""
       }
     ],
+    SlashCommands: true,
     antiCrash: true,
     timezone: "Asia/Calcutta",
     
