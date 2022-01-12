@@ -12,7 +12,7 @@ module.exports = {
     try {
       interaction.sendE("Pong!")
     } catch (e) {
-      interaction.reply("Something went wrong;)")
+      interaction.error("Something went wrong;)")
       console.log(e)
     }
   }

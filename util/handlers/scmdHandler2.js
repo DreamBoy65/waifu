@@ -15,7 +15,7 @@ async function handleSlash(client, interaction) {
    	    }
 	}
 	
-	if(!command) return;
+	if(!command) return interaction.reply({ content: "Command not found!", ephemeral: true })
 	
 	await interaction.deferReply({ephemeral: false}).catch(() => {});
 	

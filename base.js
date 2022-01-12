@@ -39,7 +39,7 @@ module.exports = {
     try {
       
     } catch (e) {
-      interaction.reply("Something went  wrong ;)..\nError: " + e.message + "\nContact my developers to fix it")
+      interaction.error("Something went  wrong ;)..\nError: " + e.message + "\nContact my developers to fix it")
       console.log(String(e).bgred)
     }
   }

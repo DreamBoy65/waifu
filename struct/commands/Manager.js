@@ -88,6 +88,19 @@ module.exports = class CommandManager{
     return this;
 
   };
+  
+  /**
+   * Add slash
+   */
+   addslash(command) {
+     if (command.cooldown.time){
+      this.cooldowns.set(command.name, new CooldownManager(command));
+    } else {
+      // Do nothing..
+    };
+    
+    return this;
+   }
 
   /**
   * Reloads a command to the handler

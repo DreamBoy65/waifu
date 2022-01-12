@@ -62,6 +62,7 @@ module.exports = (client) => {
 								return subcommand;
 							})
 							client.slashCommands.set(String(cmdSetup.CmdName).replace(/\s+/g, '_').toLowerCase() + pull.name, pull)
+							client.commands.addslash(pull)
 						} else {
 							console.log(file, `error -> missing a help.name, or help.name is not a string.`.brightRed);
 							continue;
@@ -116,6 +117,7 @@ module.exports = (client) => {
 						}
 						allCommands.push(Command.toJSON());
 						client.slashCommands.set("normal" + pull.name, pull)
+						client.commands.addslash(pull)
 				} 
 				else {
 					console.log(file, `error -> missing a help.name, or help.name is not a string.`.brightRed);
@@ -137,8 +139,8 @@ module.exports = (client) => {
 						guild.commands.set(allCommands)
 						.then(slashCommandsData => {
 							console.log(`${slashCommandsData.size} slashCommands ${`(With ${slashCommandsData.map(d => d.options).flat().length} Subcommands)`.green} Loaded for: ${`${guild.name}`.underline}`.brightGreen); 
-						}).catch((e)=>console.log(e));
-					}catch (e){
+						}).catch((e)=>console.log(`Unable to load slashCommands for ${guild.name}`.red));
+					} catch (e){
 						console.log(String(e).grey)
 					}
 				});

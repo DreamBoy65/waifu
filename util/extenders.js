@@ -15,6 +15,9 @@ const emoji = require("../config/emoji")
     if(options.image){
       embed.setImage(options.image)
     }
+     if(options.thumbnail) {
+      embed.setThumbnail(options.thumbnail)
+    }
     if(options.edit){
       this.edit({embeds: [embed]})
     }else{
@@ -68,6 +71,9 @@ Interaction.prototype.sendE = function(string, options = {}){
     }
     if(options.image){
       embed.setImage(options.image)
+    }
+     if(options.thumbnail) {
+      embed.setThumbnail(options.thumbnail)
     }
     if(options.edit){
       this.edit({embeds: [embed]})
