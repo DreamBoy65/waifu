@@ -5,18 +5,18 @@ const { readdirSync } = require('fs');
 const { join } = require('path');
 const processEvents = require(`../util/processEvents`);
 const Mongoose = require("../struct/mongoose")
-const SoundBoard = require("djs-soundboard ")
-
+const SoundBoard = require("djs-soundboard")
+const con = require("../config/config")
 class Bot extends Client {
     constructor () {
         super({
             intents: [
                 Intents.FLAGS.GUILDS,
         Intents.FLAGS.GUILD_MESSAGES,
-        Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
+ 
+Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
         Intents.FLAGS.DIRECT_MESSAGES,
-        Intents.FLAGS.GUILD_WEBHOOKS,
-        Intents.FLAGS.GUILD_INVITES,
+                Intents.FLAGS.GUILD_VOICE_STATES,
         Intents.FLAGS.GUILD_MESSAGE_TYPING,
         Intents.FLAGS.DIRECT_MESSAGE_REACTIONS,
         Intents.FLAGS.DIRECT_MESSAGE_TYPING,
@@ -25,12 +25,12 @@ class Bot extends Client {
                 parse: ["users"]
             },
             presence: {
-                activity: {
-                    name: "Global.io 🎭 | .",
-                    type: "WATCHING",
-                }, 
-                status: "dnd"
-            },
+        activity: {
+          name: "Demons 🎭 | .",
+          type: "WATCHING"
+        }, 
+      status: "dnd"
+      },
         })
             
         this.emoji = require("../config/emoji")
@@ -138,6 +138,7 @@ class Bot extends Client {
 
   for (const file of events) {
       const evt = require(`../events/${dirs}/${file}`);
+      
       const eName = file.split(".")[0];
       this.on(eName, evt.bind(null, this));
   }

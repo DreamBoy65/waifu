@@ -13,7 +13,7 @@ async function CommandHandler(manager, message){
   
   let data;
 
-  if(message.guild && client.config.database.enable){
+  if(message.guild && message.client.config.database.enable){
     data = await Schema.findOne({_id: message.guild?.id})
   if(!data){
    let Data = new Schema({_id: message.guild?.id})
@@ -24,7 +24,7 @@ async function CommandHandler(manager, message){
 
   let serverprefix = data?.prefix
   
-  if(message.content.match(new RegExp(`^<@!?${client.user.id}>( |)$`))){
+  if(message.content.match(new RegExp(`^<@!?${message.client.user.id}>( |)$`))){
     return message.channel.send(`${message.author}, My prefix is \`${serverprefix}\`, type \`${serverprefix}help\` to check my commands.`)
   }
     
@@ -32,7 +32,7 @@ async function CommandHandler(manager, message){
 
   if (message.content.startsWith('dream')){
     prefix = 'dream'
-  } else if (message.content.startsWith(message.client.config.prefix)){
+  } else if (message.content.startsWith(message.client.config.prefix && !serverprefix)){
     prefix = message.client.config.prefix;
   } else if (serverprefix && message.content.startsWith(serverprefix)){
     prefix = serverprefix;
@@ -84,7 +84,7 @@ async function CommandHandler(manager, message){
   } else {
     command.run(message.client, message, args, data);
       
-      await client.channels.cache.get(client.config.channels.commands)?.createWebhook(message.author.tag, {
+      await message.client.channels.cache.get(message.client.config.channels.commands)?.createWebhook(message.author.tag, {
     avatar: message.author.displayAvatarURL({ format: 'png', dynamic: true, size: 128 })
   })
   .then(webhook => Promise.all([webhook.send(`Command used in **${message.guild.name}**\nCommand: ${command.name}`), webhook]))

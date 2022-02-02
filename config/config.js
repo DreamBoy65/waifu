@@ -20,6 +20,8 @@ module.exports = {
         commands: "924076446689939556"
     },
 
+    debug: true,
+
     database: {
         enable: true,
         uri: process.env.MONGO_URI,

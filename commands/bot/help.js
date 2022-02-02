@@ -18,7 +18,7 @@ module.exports = {
     time: 5000
   },
   nsfw: false,
-  guildOnly: false,
+  guildOnly: true,
   run: (client, message, args) => {
    try{
        
@@ -61,7 +61,7 @@ client.commands.registers.map(c => commands.push(c.name))
    } else {
 
          let embed = new MessageEmbed()
-         .setTitle(`Global.io help panel-`)
+         .setTitle(`Waifu ~ help panel-`)
          .setThumbnail(images.dance())
          .setFooter(`©Global`)
          .setTimestamp()
@@ -85,10 +85,28 @@ client.commands.registers.map(c => commands.push(c.name))
              embed.addField(`**__\\${emo} | ${d} | ${client.commands.registers.map(c => c).filter(c => c.group === d).length}__**`, ">>> " + client.commands.registers.map(c => c).filter(c => c.group === d).map(c => `\`${c.name}\`\n${client.commands.get(c.name).description}`).join("\n\n"))
          })
 
-
          embed.addField(`**__\\😄 | Support__**`, `[Support Server](${client.config.support})`)
-         console.log(client.sound.getAllSounds())
-         message.reply({embeds: [embed]})
+         embed.addField(`**__\\😁 | Invite__**`, `[Invite Me](https://discord.com/oauth2/authorize?client_id=827614583773462528&permissions=3164160&scope=bot)`)
+         embed.addField("**__\\📢 | FeedBacks__**", "Share your feedbacks by typing `.feedback nice bot`")
+
+         const menu = new MessageSelectMenu()
+         .setPlaceholder("Select your soundboard category uWu")
+         .setCustomId("sounds")
+
+         let sounds = client.sound.getAllSounds()
+
+         sounds.map(s => {
+             menu.addOptions({
+                 label: s.category.toUpperCase(),
+                 description: "Sounds categories.",
+                 value: s.category
+             })
+         })
+
+         let row = new MessageActionRow().addComponents(menu)
+         
+         
+         message.reply({embeds: [embed], components: [row], ephemeral: true})
         }
        
    } catch (e){

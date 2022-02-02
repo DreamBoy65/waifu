@@ -13,7 +13,6 @@ module.exports = (client, guild) => guilds.findById(guild.id, async (err, doc) =
      Declare variables
   ==============================//====================================================
 */
-  guild.members.fetch()
 
 const owner = await client.users.fetch(guild.ownerId)
   .then(owner => owner.tag)
@@ -30,7 +29,7 @@ const owner = await client.users.fetch(guild.ownerId)
      new guild profile.
   ======================================================*/
   if (err){
-    client.channels.cache.get(client.config.channels.debug)?.send(`\`❌ [DATABASE_ERR]:\` The database responded with error: ${err.name}`);
+    client.channels.cache.get(client.config.channels.debug)?.send(`\`❌ [DATABASE_ERR]:\` The database responded with error: ${err.name}\n${err}`);
   } else {
     if (!doc){
       doc = await new guilds({ _id: guild.id }).save();

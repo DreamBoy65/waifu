@@ -5,5 +5,15 @@ module.exports = model("server_profiles ", Schema({
     prefix: {
         type: String,
         default: "."
+    },
+    sb: {
+        lang: {
+            type: String,
+            default: "en"
+        },
+        slow: {
+            type: Boolean,
+            default: false
+        }  
     }
 }))

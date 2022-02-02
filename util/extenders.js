@@ -3,7 +3,7 @@ const emoji = require("../config/emoji")
 
   Message.prototype.sendE = function(string, options = {}){
     const embed = new MessageEmbed()
-    .setAuthor(this.author.username, this.author.displayAvatarURL())
+    .setAuthor({ name: this.author.username, iconURL: this.author.displayAvatarURL()})
     .setDescription(string)
     .setColor("RANDOM")
        .setFooter(`\©${new Date().getFullYear()} globe.io`)
@@ -25,14 +25,14 @@ const emoji = require("../config/emoji")
 
 
 Message.prototype.error = function(string){
-this.reply({embeds: [new MessageEmbed(). setAuthor(this.author.username, this.author.displayAvatarURL()).setDescription(`${emoji.no}` + " | " + string).setColor("RED").setFooter(`\©${new Date().getFullYear()} globe.io`)
+this.reply({embeds: [new MessageEmbed(). setAuthor({ name: this.author.username, iconURL: this.author.displayAvatarURL()}).setDescription(`${emoji.no}` + " | " + string).setColor("RED").setFooter(`\©${new Date().getFullYear()} globe.io`)
     .setTimestamp()]})
 }
 
 Message.prototype.success = function(string){
   this.reply({embeds: [
     new MessageEmbed()
-  .setAuthor(this.author.username, this.author.displayAvatarURL())
+  .setAuthor({ name: this.author.username, iconURL: this.author.displayAvatarURL()})
   .setDescription(`${emoji.yes} | ${string}`)
     .setColor("GREEN")
     .setFooter(`\©${new Date().getFullYear()} globe.io`)

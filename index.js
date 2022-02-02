@@ -2,6 +2,8 @@ const Bot = require("./struct/client")
 
 const client = new Bot()
 
+require("./website")
+
 const options = {
   bypass: true,
   log: true,

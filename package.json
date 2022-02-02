@@ -1,7 +1,6 @@
 {
-  "name": "globalio",
+  "name": "waifu",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -14,9 +13,42 @@
     "node": "^16.13.1"
   },
   "dependencies": {
-    "discord.js": "^13.3.1",
+    "@discordjs/builders": "^0.8.2",
+    "@discordjs/opus": "^0.6.0",
+    "@discordjs/rest": "0.1.0-canary.0",
+    "@discordjs/voice": "^0.6.0",
+    "@distube/ytdl": "^2.0.6",
+    "@google-cloud/text-to-speech": "^3.4.0",
+    "chalk": "^4.1.2",
+    "comma-number": "^2.1.0",
+    "didyoumean": "^1.2.2",
+    "discord-api-types": "^0.24.0",
+    "discord-images": "^0.1.6",
+    "discord-tts": "^1.2.1",
+    "discord-ytdl-core": "^5.0.4",
+    "discord.js": "^13.1.0",
+    "djs-soundboard": "^4.0.9",
+    "express": "^4.17.2",
+    "ffmpeg-static": "^4.4.0",
+    "google-tts-api": "^2.0.2",
+    "libsodium-wrappers": "^0.7.9",
+    "lodash": "^4.17.21",
     "moment": "^2.29.1",
-    "mongoose": "^6.1.2",
-    "ms": "^2.1.3"
-  }
+    "mongoose": "^6.1.3",
+    "ms": "^2.1.3",
+    "path": "^0.12.7",
+    "stream": "0.0.2",
+    "youtube-sr": "^4.1.7",
+    "ytdl-core": "^4.9.1",
+    "ytsr": "^3.5.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DreamBoy65/waifu.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DreamBoy65/waifu/issues"
+  },
+  "homepage": "https://github.com/DreamBoy65/waifu#readme",
+  "description": "fun bot!"
 }
