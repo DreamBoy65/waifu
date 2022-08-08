@@ -1,5 +1,5 @@
 const { MessageEmbed, MessageButton, MessageActionRow } = require("discord.js")
-const emoji = require(`${process.cwd()}/Demon-bot/config/Emoji`)
+const emoji = require(`${process.cwd()}/config/emoji`)
 
 module.exports = {
   pagesCollector: async function(msg, author, time, pages){
@@ -58,9 +58,6 @@ module.exports = {
     })
 
     collector.on("end", () => {
-      
-      if(msg.deleted) return;
-      
       msg?.edit({components: []})
     })
  },

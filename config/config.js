@@ -8,8 +8,11 @@ module.exports = {
         }, 
       status: "dnd"
       },
-      token: ""
+      token: "ODA0MDMzOTg1MTY4NTM5NzE5.GekdB5.0qvhVcPzdhwJHsoxael8Mpnx-Oy84ALFH81FG0"
     },
+    
+    owners: ["813299347819069520"],
+    
     prefix: ".",
     support: "https://discord.gg/pwAXkpsCHf",
     loadSlashsGlobal: false,

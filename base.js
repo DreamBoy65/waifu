@@ -35,7 +35,7 @@ module.exports = {
   memberpermissions: [],
   clientPermissions: [],
   nsfw: false,
-  run: async(client, interacton) => {
+  run: async(client, interaction) => {
     try {
       
     } catch (e) {

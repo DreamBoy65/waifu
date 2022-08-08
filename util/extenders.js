@@ -6,7 +6,7 @@ const emoji = require("../config/emoji")
     .setAuthor({ name: this.author.username, iconURL: this.author.displayAvatarURL() })
     .setDescription(string)
     .setColor("RANDOM")
-       .setFooter({ text: `\©${new Date().getFullYear()} ${this.client.user.username}` })
+       .setFooter({ text: `\©${new Date().getFullYear()} ${this.client.user.username}`, iconURL: this.client.user.displayAvatarURL() })
     .setTimestamp()
     
     if(options.title){
@@ -28,7 +28,7 @@ const emoji = require("../config/emoji")
 
 
 Message.prototype.error = function(string){
-this.reply({embeds: [new MessageEmbed(). setAuthor({ name: this.author.username, iconURL: this.author.displayAvatarURL() } ).setDescription(`${emoji.no}` + " | " + string).setColor("RED").setFooter({ text: `\©${new Date().getFullYear()} ${this.client.user.username}` })
+this.reply({embeds: [new MessageEmbed(). setAuthor({ name: this.author.username, iconURL: this.author.displayAvatarURL() } ).setDescription(`${emoji.no}` + " | " + string).setColor("RED").setFooter({ text: `\©${new Date().getFullYear()} ${this.client.user.username}`, iconURL: this.client.user.displayAvatarURL() })
     .setTimestamp()]})
 }
 
@@ -38,7 +38,7 @@ Message.prototype.success = function(string){
   .setAuthor({ name: this.author.username, iconURL: this.author.displayAvatarURL() })
   .setDescription(`${emoji.yes} | ${string}`)
     .setColor("GREEN")
-    .setFooter({ text: `\©${new Date().getFullYear()} ${this.client.user.username}` })
+    .setFooter({ text: `\©${new Date().getFullYear()} ${this.client.user.username}`, iconURL: this.client.user.displayAvatarURL() })
     .setTimestamp()
   ]})
 }
@@ -63,7 +63,7 @@ Interaction.prototype.sendE = function(string, options = {}){
     .setAuthor({ name: this.user.username, iconURL: this.user.displayAvatarURL() })
     .setDescription(string)
     .setColor("RANDOM")
-       .setFooter({ text: `\©${new Date().getFullYear()} ${this.client.user.username}` })
+       .setFooter({ text: `\©${new Date().getFullYear()} ${this.client.user.username}`, iconURL: this.client.user.displayAvatarURL() })
     .setTimestamp()
     
     if(options.title){
@@ -85,7 +85,7 @@ Interaction.prototype.sendE = function(string, options = {}){
 
 
 Interaction.prototype.error = function(string){
-this.followUp({embeds: [new MessageEmbed(). setAuthor({ name: this.user.username, iconURL: this.user.displayAvatarURL() } ).setDescription(`${emoji.no}` + " | " + string).setColor("RED").setFooter({ text: `\©${new Date().getFullYear()} ${this.client.user.username}` })
+this.followUp({embeds: [new MessageEmbed(). setAuthor({ name: this.user.username, iconURL: this.user.displayAvatarURL() } ).setDescription(`${emoji.no}` + " | " + string).setColor("RED").setFooter({ text: `\©${new Date().getFullYear()} ${this.client.user.username}`, iconURL: this.client.user.displayAvatarURL() })
     .setTimestamp()]})
 }
 
@@ -95,7 +95,7 @@ Interaction.prototype.success = function(string){
   .setAuthor({ name: this.user.username, iconURL: this.user.displayAvatarURL() })
   .setDescription(`${emoji.yes} | ${string}`)
     .setColor("GREEN")
-    .setFooter({ text: `\©${new Date().getFullYear()} ${this.client.user.username}` })
+    .setFooter({ text: `\©${new Date().getFullYear()} ${this.client.user.username}`, iconURL: this.client.user.displayAvatarURL() })
     .setTimestamp()
   ]})
 }

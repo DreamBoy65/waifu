@@ -1,8 +1,7 @@
 const { MessageActionRow, MessageEmbed, MessageSelectMenu } = require('discord.js');
 const didYouMean = require("didyoumean")
 const { readdirSync } = require("fs")
-const Images = require("discord-images")
-const images = new Images.Client()
+const images = require("discord-images")
 const _ = require("lodash")
 
 module.exports = {

@@ -19,7 +19,7 @@ client.loadEvents({
   dirs: ["client", "guild"]
 });
 
-if(client.config.slashCommands) {
+if(client.config.SlashCommands) {
   client.loadSlash()
 }
 

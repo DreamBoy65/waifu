@@ -16,7 +16,7 @@ function check(message, command){
   }
 
   if (command.ownerOnly){
-      if (!message.client.config.owners.includes(message.author.id)){
+      if (!message.client.config.owners.includes(message.author ? message.author.id : message.user.id)){
         reasons.push([
           '**Limited to Devs**',
           'This command can only be used by my developers.'
@@ -81,7 +81,9 @@ function check(message, command){
   const embed = new MessageEmbed()
   .setAuthor({ name: 'Command Execution Blocked!' })
   .setColor('ORANGE')
-  .setDescription(`Reasons:\n\n${reasons.map(reason => '• ' + reason).join('\n')}`);
+  .setDescription(`Reasons:\n\n${reasons.map(reason => '• ' + reason).join('\n')}`)
+  .setFooter({ text: `\©${new Date().getFullYear()} ${message.client.user.username}`, iconURL: message.client.user.displayAvatarURL() })
+  .setTimestamp()
 
   return { accept: !reasons.length, embed }
 }
