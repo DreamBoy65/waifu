@@ -19,7 +19,7 @@ module.exports = {
       "String": {
       name: "code",
       description: "Code to Eval.",
-      required: true,
+      required: true
       }
     }
   ],

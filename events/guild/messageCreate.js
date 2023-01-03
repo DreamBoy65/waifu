@@ -1,7 +1,7 @@
 let Schema = require("../../models/GuildProfile");
 
 module.exports = async (client, message) => {
-  
+  return;
   if (message.author.bot){
     return;
   }

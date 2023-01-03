@@ -3,13 +3,13 @@ const ms = require("ms")
 const Schema = require("../../models/GuildProfile")
 async function CommandHandler(manager, message){
 
-  if (message.guild){
+ /* if (message.guild){
     if (!message.channel.permissionsFor(message.guild.me).has('SEND_MESSAGES')){
       return { executed: false, reason: 'PERMISSION_SEND'};
     } else {
       // Do nothing..
     };
-  };
+  };*/
   
   let data;
 

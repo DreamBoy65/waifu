@@ -1,11 +1,12 @@
 const Bot = require("./struct/client");
+require("./website")
 
 const client = new Bot();
 
 const options = {
   bypass: true,
   log: true,
-  paths: ["bot"]
+  paths: []
 };
 
 client.loadCommands({ 

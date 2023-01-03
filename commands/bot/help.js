@@ -60,7 +60,7 @@ client.commands.registers.map(c => commands.push(c.name))
    } else {
 
          let embed = new MessageEmbed()
-         .setTitle(`Global.io help panel-`)
+         .setTitle(`Waifu help panel-`)
          .setThumbnail(images.dance())
          .setFooter(`©Global`)
          .setTimestamp()
@@ -88,6 +88,7 @@ client.commands.registers.map(c => commands.push(c.name))
 
 
          embed.addField(`**__\\😄 | Support__**`, `[Support Server](${client.config.support})`)
+       embed.addField("We Have Shifted to slash cmds!", "If bot is not working reinvite her!. ")
          message.reply({embeds: [embed]})
         }
        

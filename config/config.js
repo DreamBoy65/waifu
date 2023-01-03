@@ -8,14 +8,16 @@ module.exports = {
         }, 
       status: "dnd"
       },
-      token: "ODA0MDMzOTg1MTY4NTM5NzE5.GekdB5.0qvhVcPzdhwJHsoxael8Mpnx-Oy84ALFH81FG0"
+      token: process.env.Token
     },
     
     owners: ["813299347819069520"],
     
     prefix: ".",
     support: "https://discord.gg/pwAXkpsCHf",
-    loadSlashsGlobal: false,
+    invite: "https://discord.com/api/oauth2/authorize?client_id=827614583773462528&permissions=2150647808&scope=bot%20applications.commands",
+
+    loadSlashsGlobal: true,
     slashCommandsDirs: [
       {
         Folder: "",

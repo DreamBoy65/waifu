@@ -6,6 +6,7 @@ const { join } = require('path');
 const processEvents = require(`../util/processEvents`);
 const Mongoose = require("../struct/mongoose")
 const colors = require('colors');
+const SoundBoard = require("djs-soundboard")
 
 class Bot extends Client {
     constructor () {
@@ -20,6 +21,8 @@ class Bot extends Client {
         Intents.FLAGS.GUILD_MESSAGE_TYPING,
         Intents.FLAGS.DIRECT_MESSAGE_REACTIONS,
         Intents.FLAGS.DIRECT_MESSAGE_TYPING,
+              Intents.FLAGS.GUILD_VOICE_STATES,
+              
             ],
             allowedMentions: {
                 parse: ["users"]
@@ -31,6 +34,7 @@ class Bot extends Client {
         this.commands = new CommandManager(this)
         this.slashCommands = new Collection()
         this.resolvers = require("../util/resolvers")
+        this.sound = new SoundBoard()
 
         require("../util/extenders")
         this.database = null
