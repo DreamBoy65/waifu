@@ -1,5 +1,4 @@
-const text = require(`${process.cwd()}/util/string`);
-const guilds = require(`${process.cwd()}/models/GuildProfile`);
+
 module.exports = async (client, guild) => {
 
   /*===============WELCOME TO THE GUILD_CREATE EVENT=============
@@ -19,15 +18,6 @@ module.exports = async (client, guild) => {
   const message = `${logo} : **${members}** members, owned by **${owner}**`;
   //===================================================//
 
-  guilds.findById(guild.id, async (err, doc) => {
-  if (err){
-    client.channels.cache.get(client.config.channels.debug)?.send(`\`❌ [DATABASE_ERR]:\` The database responded with error: ${err.name}`);
-  } else {
-    if (doc){
-      doc = await doc.delete()
-    }
-  };
-  })
   /*======================================================
      Sends a notification to a log channel (if available)
      that the bot has left a server

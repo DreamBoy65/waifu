@@ -1,36 +1,12 @@
-const Bot = require("./struct/client");
-require("./website")
+const {
+  Client
+} = require(`@shadowgarden/djs-framebot`)
+const config = require("./config")
+const client = new Client(config)
+const Player = require("./player/index")
+const SoundBoard = require("djs-soundboard")
+client.sound = new SoundBoard()
+client.player = new Player(client)
+global.cl = client
 
-const client = new Bot();
-
-const options = {
-  bypass: true,
-  log: true,
-  paths: []
-};
-
-client.loadCommands({ 
-  parent: 'commands', 
-  ...options 
-});
-
-client.loadEvents({ 
-  parent: 'events', 
-  ...options,
-  dirs: ["client", "guild"]
-});
-
-if(client.config.SlashCommands) {
-  client.loadSlash()
-}
-
-client.database?.init()
-
-if(client.config.antiCrash) {
-  client.listentoProcessEvents([
-  'unhandledRejection',
-  'uncaughtException'
-  ], { ignore: false });
-}
-
-client.login(client.config.client.token)
+client.start()

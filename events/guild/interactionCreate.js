@@ -1,68 +1,82 @@
-const { handleSlash } = require("../../util/handlers/scmdHandler2")
-const { MessageActionRow, MessageSelectMenu } = require("discord.js")
+const {
+  ActionRowBuilder,
+  StringSelectMenuBuilder,
+  StringSelectMenuOptionBuilder,
+} = require("discord.js");
 
-module.exports = async(client, interaction) => {
+module.exports = async (client, int) => {
+  if (int.customId === "soundb") {
+    let category = int.values[0];
+    let sounds = client.sound.getAllSounds();
 
-  console.log("lol")
+    sounds = sounds.find((c) => c.category === category);
+    await int.deferReply({ ephemeral: false }).catch(() => {});
 
-  if(interaction.type === "APPLICATION_COMMAND") {
-    await handleSlash(client, interaction)
-  }
+    if (!sounds)
+      return int.followUp({
+        content: "Something went wrong!",
+        ephemeral: true,
+      });
 
-  if(interaction.customId === "soundb") {
-    let category = interaction.values[0]
-    let sounds = client.sound.getAllSounds()
-    sounds = sounds.find(c => c.category === category)
-    await interaction.deferReply({ephemeral: false}).catch(() => {});
+    let menus = [];
+    let rows = [];
+    let opts = [];
 
-    if(!sounds) return interaction.followUp({content: "Something went wrong!", ephemeral: true})
-
-    let menus = []
-    let rows = []
-    let opts = []
-        
     for (let i = 0; i < Math.ceil(sounds.sounds.length / 20); i++) {
-      let menu = new MessageSelectMenu()
-      .setCustomId(`play-${i}`)
-      .setPlaceholder("Select Sounds ^_^")
+      let menu = new StringSelectMenuBuilder()
+        .setCustomId(`play-${i}`)
+        .setPlaceholder("Select Sounds ^_^");
 
-      menus.push(menu)
+      menus.push(menu);
     }
-    
+
     for (const sound of sounds.sounds) {
-      opts.push({
-        label: sound,
-        description: "Click Me ^^",
-        value: sound
-      })
+      opts.push(
+        new StringSelectMenuOptionBuilder()
+          .setLabel(sound)
+          .setDescription("Click Me dude")
+          .setValue(sound)
+      );
     }
-    
+
     menus.forEach((m, i) => {
-      m.options = opts.slice(0 + (i * 20), 20 + (i * 20))    
-    })
-      
-    for(const menu of menus) {
-      rows.push(new MessageActionRow().addComponents(menu))
-    }     
-    
-    interaction.followUp({content: "Here you go!", components: rows, ephemeral: true})
+      m.addOptions(opts.slice(0 + i * 20, 20 + i * 20));
+    });
+
+    for (const menu of menus) {
+      rows.push(new ActionRowBuilder().addComponents(menu));
+    }
+
+    int.followUp({
+      content: "Here, Look at these cool sounds.",
+      components: rows,
+    });
   }
 
-  if(interaction.customId?.split("-")[0] === "play") {
-    let vc = interaction.member.voice.channel
-    
-    if(!vc) interaction.reply({content: "Join vc first!", ephemeral: true})
+  if (int.customId?.split("-")[0] === "play") {
+    let vc = int.member.voice.channel;
 
-   /*if(!vc.permissionFor(interaction.guild.me).has("SPEAK" || "CONNECT")) {
+    if (!vc) int.reply({ content: "Join vc first!", ephemeral: true });
+
+    /*if(!vc.permissionFor(interaction.guild.me).has("SPEAK" || "CONNECT")) {
       interaction.reply({content: "I Dont have permission to join or speak in your vc!", ephemeral: true})
     }*/
 
-    let array = client.sound.getAllSounds()
+    let array = client.sound.getAllSounds();
 
-    if(array.find(c => c.category === "nsfw").sounds.find(c => c === interaction.values[0]) && !interaction.channel.nsfw) return interaction.reply({content: "You Can only play nsfw sounds in nsfw text-channel!", ephemeral: true })
+    if (
+      array
+        .find((c) => c.category === "nsfw")
+        .sounds.find((c) => c === int.values[0]) &&
+      !int.channel.nsfw
+    )
+      return int.reply({
+        content: "You Can only play nsfw sounds in nsfw text-channel!",
+        ephemeral: true,
+      });
 
-    await client.sound.play(vc, interaction.values[0])
-    
-    interaction.reply({content: "\\🔊", ephemeral: true})
+    await client.sound.play(vc, int.values[0]);
+
+    int.reply({ content: "?●•°¿", ephemeral: true });
   }
-}
+};
